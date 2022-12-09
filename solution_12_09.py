@@ -1,5 +1,3 @@
-import matplotlib.pyplot as plt
-
 class Segment:
     child = None
     parent = None
@@ -75,8 +73,9 @@ if __name__ == "__main__":
     s7.add_child(s8)
     s8.add_child(s9)
 
-    coord_list = [(0,0)]
-    
+    coord_list_1 = [(0,0)]
+    coord_list_2 = [(0,0)]
+
     for x in data:
         x_split = x.split(" ")
         direction = x_split[0]
@@ -84,13 +83,9 @@ if __name__ == "__main__":
 
         for i in range(int(dist)):
             h.move(direction)
-            coord_list.append((s9.pos_x, s9.pos_y))
+            coord_list_1.append((s1.pos_x, s1.pos_y))
+            coord_list_2.append((s9.pos_x, s9.pos_y))
 
-            #plt.scatter([h.pos_x, s1.pos_x, s2.pos_x, s3.pos_x, s4.pos_x, s5.pos_x, s6.pos_x, s7.pos_x, s8.pos_x, s9.pos_x], 
-            #[h.pos_y, s1.pos_y, s2.pos_y, s3.pos_y, s4.pos_y, s5.pos_y, s6.pos_y, s7.pos_y, s8.pos_y, s9.pos_y])
-            #plt.xlim(-15, 15)
-            #plt.ylim(-15, 15)
-            #plt.show()
-
-    print(len(set(coord_list)))
+    print(len(set(coord_list_1)))
+    print(len(set(coord_list_2)))
 
