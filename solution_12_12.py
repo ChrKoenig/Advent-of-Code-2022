@@ -20,22 +20,21 @@ def get_neighbors(i, j, cells_visited):
     
     return neighbors
 
-def print_grid(frontier, cells_visited):
+def print_grid(frontier, cells_visited, sleep = 0):
     grid_print = ""
     for i, s in enumerate(grid):
         for j, c in enumerate(s):
-            if (i,j) in cells_visited:
+            if (i,j) in frontier:
+                grid_print += "#"
+            elif (i,j) in cells_visited:
                 grid_print += "."
-            elif (i,j) in frontier:
-                grid_print += "X"
             else:
                 grid_print += c
     print('\n'.join(re.findall('.{1,143}', grid_print)))
-    print("\n ################ \n")
+    time.sleep(sleep)
 
 if __name__ == "__main__":
     # Initialize grid
-    clear = lambda: os.system('cls')
     grid = open('data/data_12_12.txt', 'r').read().split('\n')
 
     # Part 1
@@ -45,7 +44,6 @@ if __name__ == "__main__":
     #             start = (i,j)
     #         elif grid[i][j] == "E":
     #             end = (i,j)
-
     # frontier = [start]
     
     # Part 2
@@ -60,10 +58,12 @@ if __name__ == "__main__":
     cells_visited = []
     path_length = 0
     shortest_path = 0
+    clear = lambda: os.system('cls')
 
     while shortest_path == 0 and len(frontier) > 0:
-        # clear()
-        # print_grid(frontier, cells_visited)
+        #clear()
+        #print_grid(frontier, cells_visited, sleep = 0)
+
         cells_visited = cells_visited + frontier
         new_frontier = []
         path_length += 1
