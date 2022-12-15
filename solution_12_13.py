@@ -54,9 +54,13 @@ if __name__ == "__main__":
     
     # avoid repeated eval
     data = [eval(x) for x in data]
+
+    # sort data using is_in_order
     in_order_key = cmp_to_key(is_in_order)
     data.sort(key = in_order_key)
     data.reverse()
+
+    # Calc decodey_key
     decoder_key = 1
     for i, x in enumerate(data):
         if x == [[6]] or x == [[2]]:
